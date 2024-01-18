@@ -77,10 +77,27 @@ class DatabaseHelper {
     return count;
   }
 
+  Future<void> addtDeafult() async {
+    final db = await database;
+    for (int i = 1; i <= 10; i++) {
+      await db.insert('preference', {'theme': ''});
+    }
+  }
+
+  Future<void> updateDefault() async {
+    final db = await database;
+    await db.update('preference', {'theme': ''});
+  }
+
   Future<void> updateTheme(int id, String newTheme) async {
     final db = await database;
     await db.update('preference', {'theme': newTheme},
         where: 'id = ?', whereArgs: [id]);
+  }
+
+  Future<void> removeAllPreference() async {
+    final db = await database;
+    await db.delete('preference');
   }
 
   // Métodos para la tabla de favoritos

@@ -1,3 +1,4 @@
+import 'package:bookhub/src/helpers/database_helpers.dart';
 import 'package:bookhub/src/screens/screens.dart';
 import 'package:bookhub/src/screens/main_screen/main_screen_model.dart';
 import 'package:bookhub/src/widgets/background_widget.dart';
@@ -17,6 +18,11 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<MainScreenModel>.reactive(
       onViewModelReady: (model) async {
+/****************************************************************/
+        //Elimina registros de base de datos solo para pruebas
+        //    await DatabaseHelper().removeAllFavorites();
+        //    await DatabaseHelper().updateDefault();
+/***************************************************************/
         await model.updateViewPreference();
       },
       viewModelBuilder: () => MainScreenModel(),

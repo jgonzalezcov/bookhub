@@ -57,8 +57,6 @@ class BookService {
       // Convierte el HTML a texto plano
       final description = parse(descriptionHtml).body!.text;
 
-      print(description);
-
       return Book(
         id: bookId,
         titulo: title,
